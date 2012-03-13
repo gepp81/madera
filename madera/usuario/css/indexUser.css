@@ -1,0 +1,96 @@
+/* 
+	Cusco Sky table styles
+	written by Braulio Soncco http://www.buayacorp.com
+*/
+
+table, th, td {
+	border: 1px solid #D4E0EE;
+	border-collapse: collapse;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	color: #555;
+	text-align: center;
+}
+table{
+	width: 100%;
+}
+
+caption {
+	font-size: 150%;
+	font-weight: bold;
+	margin: 5px;
+}
+
+td, th {
+	padding: 4px;
+}
+
+thead th {
+	text-align: center;
+	background: #E6EDF5;
+	color: #4F76A3;
+	font-size: 100% !important;
+}
+
+tbody th {
+	font-weight: bold;
+}
+
+tbody tr { background: #FCFDFE; }
+
+tbody tr.odd { background: #F7F9FC; }
+
+table a:link {
+	color: #718ABE;
+	text-decoration: none;
+}
+
+table a:visited {
+	color: #718ABE;
+	text-decoration: none;
+}
+
+table a:hover {
+	color: #718ABE;
+	text-decoration: underline !important;
+}
+
+tfoot th, tfoot td {
+	font-size: 85%;
+}
+.wid25{
+	width: 24%;	
+}
+.wid50{
+	width: 49%;	
+}
+.wid75{
+	width: 74%;	
+}
+.wid100{
+	width: 99%;	
+}
+.texto15{
+	font-size: 1.5em;
+}
+.texto1{
+	font-size: 0.8em;
+	font-family: 'Arial';
+}
+/* MENSAJES */
+.mensaje_ok{
+	margin-left: 12%;
+	border: solid 1px #2b5205;
+	background-color: green;
+	width: 75%;
+	color: #fff;
+}
+.mensaje_error{
+	border: solid 1px #a90000;
+	background-color: d43232;
+	width: 75%;
+	color: #fff;
+}
+/* FIN MENSAJES */
+.eliminar_imagen, .marcar_imagen, .eliminar_producto{
+    cursor: pointer;
+}

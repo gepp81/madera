@@ -1,14 +1,14 @@
 <?php
-	session_start();
-	if ($_SESSION['nombre'] != 'tripaloca2007milKK') {
-		session_destroy();
-		header('Location: ../acceder.php');
-	}
-	include_once '../db.php';
+session_start();
+if ($_SESSION['nombre'] != 'tripaloca2007milKK') {
+    session_destroy();
+    header('Location: ../acceder.php');
+}
+include_once '../db.php';
 
-	// Traigo los ids
-	$query = "SELECT id, nombre FROM md_item";
-	$listado = $conexion->query($query);
+// Traigo los ids
+$query = "SELECT id, nombre FROM md_item";
+$listado = $conexion->query($query);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,22 +35,50 @@
                     </ul>
                 </div>
             </div>
-			<div class="center_content">
-				<table>
-					<tr align='center'>
-						<th>Editar</th>
-						<th>Subir foto</th>
-						<th>Eliminar Producto</th>
-					</tr>
-					<?php while ($obj = $listado->fetch_object()) : ?>
-						<tr>
-							<td><a href='nuevo.php?id=<?php echo $obj->id; ?>'><?php echo $obj->nombre;?></a></td>
-							<td><a href='editarfotos.php?id=<?php echo $obj->id; ?>&nombre=<?php echo $obj->nombre;?>'>Editar Fotos</a></td>
-                                                        <td><label class='eliminar_producto' item="<?php echo $obj->id; ?>">Eliminar Producto</label></td>
-						</tr>
-					<?php endwhile; ?>
-				</table>
-			</div>
-		</div>
-	</body>
+            <div class="center_content">
+                <table>
+                    <thead>
+                        <tr><th colspan="5">LISTADO DE PRODUCTOS</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr align='center'>
+                            <th>Producto</th>
+                            <th>Editar</th>
+                            <th>Administrar Fotos</th>
+                            <th>Eliminar Producto</th>
+                        </tr>
+                        <?php while ($obj = $listado->fetch_object()) : ?>
+                            <tr>
+                                <td>
+                                    <label style="font-size: 1.3em; font-weight: bold;">
+                                        <a href='nuevo.php?id=<?php echo $obj->id; ?>'><?php echo $obj->nombre; ?></a>
+                                    </label>
+                                </td>
+                                <td>
+                                    <a href='nuevo.php?id=<?php echo $obj->id; ?>'>
+                                        <img src="images/editar.gif" width="24" height="24"></img>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href='editarfotos.php?id=<?php echo $obj->id; ?>&nombre=<?php echo $obj->nombre; ?>'>
+                                        <img src="images/imagenes.png" width="24" height="24"></img>
+                                    </a>
+                                </td>
+                                <td>
+                                    <label class='eliminar_producto' item="<?php echo $obj->id; ?>">
+                                        <img src="images/cancelar.png" width="24" height="24"></img>
+                                    </label>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"><label style="font-size: 1.3em; font-weight: bold;">Total de Productos: <?php echo $listado->num_rows; ?></label></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>

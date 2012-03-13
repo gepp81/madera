@@ -76,19 +76,33 @@ $listado = $conexion->query($query);
                 <form action='subirfoto.php' method='post' enctype="multipart/form-data">
                     <table class='wid50'>
                         <tr>
-                            <th>Agregar una foto</th>
+                            <th>Agregar una foto a este producto</th>
                         </tr>
                         <tr>
                             <td><input type="file" name="archivo" value=""/> </td>
                         </tr>
                         <tr>
                             <td>Nombre:<input type="text" name="nombre" value=""/>
-                                <br/>Si el archivo ya existe lo sobreescribira !!!</td>
+                                <br/>Si el archivo ya existe lo sobreescribira !!!
+                                <br/>El nombre del archivo se crea con este nombre y el id en la base. Quedaría como 15xxx.jpg</td>
                         </tr>
                         <tr>
                             <td><input type="submit" name="submit" value="Subir" /></td>
                         </tr>
                     </table>
+                    <hr/>
+                    <table class='wid50'>
+                        <tr><th colspan="2">AYUDAS</th></tr>
+                        <tr>
+                            <td><img src='images/cancelar.png' width="24" height="24" title="Eliminar Foto"></img></td><td>Elimina esta imagen.</td>
+                        </tr>
+                        <tr>
+                            <td><img src='images/estrellallena.png' width="24" height="24" title="FOTO A MOSTRAR PRIMERA" ></img></td><td>Es la imagen principal</td>
+                        </tr>
+                        <tr>
+                            <td><img src='images/estrellavacia.png' width="24" height="24" title="Marca COMO PREFERIDA" ></img></td><td>Son las fotos secundarias, "click sobre esta estrella" para marcar esta foto como principal</td>
+                        </tr>                        
+                    </table>                    
                 </form>
             </div>
         </div>

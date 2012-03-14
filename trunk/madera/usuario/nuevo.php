@@ -33,17 +33,8 @@ if (isset($_GET['id'])) {
     </head>
     <body>
         <div id="wrap">
-            <div class="header">
-                <div class="logo"><a href="index.php"><img src="../images/logo.jpg" alt="" title="" border="0" /></a></div>
-                <div id="menu">
-                    <ul>
-                        <li><a href="index.php">INICIO</a></li>
-                        <li class="selected"><a href="nuevo.php">Nuevo Producto</a></li>
-                        <li><a href="productos.php">Listado de Productos</a></li>
-                       	<li><a href="salir.php">SALIR</a></li>
-                    </ul>
-                </div>
-            </div>
+            <?php include 'header.php'; ?>
+            <?php mostrarHeader(2); ?>
             <div class="center_content">
                 <form method="post" action="guardar.php" class="texto15" id="form" onsubmit="return verificar()">
                     <?php if (isset($item)) : ?>

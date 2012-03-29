@@ -10,25 +10,29 @@
             Para cualquier consulta acceda a la secci&oacute;n contacto y deje la suya.
         </p>
     </div>
+    <?php
+    include 'db.php';
+    if ($res = $conexion->query("SELECT i.*, f.`foto` AS `imagen` FROM `md_item` i INNER JOIN `md_foto` f ON f.`id_item` = i.`id` WHERE f.`preferida` = '1' ORDER BY `i`.`nuevo` DESC Limit 2")) {
+        $conexion->commit();
+        $conexion->close();
+    } else {
+        $conexion->rollback();
+        echo 'Error SQL';
+        exit();
+    }
+    ?>
     <div class="right_box">
         <div class="title"><span class="title_icon"><img src="images/bullet2.png" alt="" title=""/></span>Nuevos</div> 
-        <div class="new_prod_box">
-            <a href="details.php?id=18">
-                Mesa de Arrime
-                <span class="new_prod_bg">
-                    <img src="images/muebles/mesaarrime01.jpg" alt="" title="" class="thumb" border="0" width="88" height="96"/>
-                </span> 
-            </a>
-        </div>
-
-        <div class="new_prod_box">
-            <a href="details.php?id=14">
-                Cava de Hierro
-                <span class="new_prod_bg">
-                    <img src="images/muebles/bodega03.jpg" alt="" title="" class="thumb" border="0" width="88" height="96"/>
-                </span>
-            </a>
-        </div>
+        <?php while ($obj = $res->fetch_object()) : ?>
+            <div class="new_prod_box">
+                <a href="details.php?id=<?php echo $obj->id; ?>">
+                    <?php echo $obj->nombre; ?>
+                    <span class="new_prod_bg">
+                        <img src="images/muebles/<?php echo $obj->imagen; ?>" alt="" title="" class="thumb" border="0" width="88" height="96"/>
+                    </span> 
+                </a>
+            </div>
+        <?php endwhile; ?>
 
         <!--div class="new_prod_box">
             <a href="details.php?id=9">

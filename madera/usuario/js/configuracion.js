@@ -57,4 +57,37 @@ $(window).ready(function(){
         }
         select.val(actual);
     });
+    
+    $('#guardarNew').click(function(){
+        if ($('#nuevo1').val() != $('#nuevo2').val()){
+            var arreglo = new Array();
+            //Recorro los select
+            arreglo.push($('#nuevo1').val());
+            arreglo.push($('#nuevo2').val());
+
+            $.ajax({
+                data : {
+                    'item' : arreglo
+                },
+                type : 'post',
+                url : 'guardaconfignew.php',
+                dataType : 'json',
+                success : function(data){
+                    if (data.estado){
+                        location.reload();
+                    }
+                    else {
+                        alert("noanda");
+                    }
+                },
+                error : function(){
+                    alert("error");
+                }
+            });        
+        }
+        else{
+            alert("Hay dos iguales!!");
+        }
+    })
+   
 });

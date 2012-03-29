@@ -29,17 +29,8 @@ $listado = $conexion->query($query);
     </head>
     <body>
         <div id="wrap">
-            <div class="header">
-                <div class="logo"><a href="index.php"><img src="../images/logo.jpg" alt="" title="" border="0" /></a></div>
-                <div id="menu">
-                    <ul>
-                        <li><a href="index.php">INICIO</a></li>
-                        <li><a href="nuevo.php">Nuevo Producto</a></li>
-                        <li><a href="productos.php">Listado de Productos</a></li>
-                        <li><a href="salir.php">SALIR</a></li>
-                    </ul>
-                </div>
-            </div>
+            <?php include 'header.php'; ?>
+            <?php mostrarHeader(0); ?>
             <div style="width: 900px;">
                 <table>
                     <tr>

@@ -10,9 +10,9 @@
 	
 	if ($file['error'] == 0){
 		$idItem = $_SESSION['item_id'];
-		//$ext = substr($file['name'], strrpos($file['name'], '.'), 4);
-		if (move_uploaded_file($file['tmp_name'],"../images/muebles/". $idItem . $_POST['nombre'])){
-			$conexion->query("INSERT INTO `md_foto` VALUES ('', '".$idItem."', '".$idItem . $_POST['nombre']."', '')");
+		$ext = substr($file['name'], strripos($file['name'], '.'), 4);
+		if (move_uploaded_file($file['tmp_name'],"../images/muebles/". $idItem . $_POST['nombre'] . $ext)){
+			$conexion->query("INSERT INTO `md_foto` VALUES ('', '".$idItem."', '".$idItem . $_POST['nombre']. $ext ."', '')");
 		}
 	}
 	header("Location: editarfotos.php?id=". $_SESSION['item_id'] ."&nombre=". $_SESSION['item_nombre']);

@@ -7,7 +7,7 @@ if ($_SESSION['nombre'] != 'tripaloca2007milKK') {
 include_once '../db.php';
 
 // Traigo los ids
-$query = "SELECT `id`, `nombre`, `orden` FROM `md_item` ORDER BY `orden` ASC";
+$query = "SELECT `id`, `nombre`, `orden`, `nuevo` FROM `md_item` ORDER BY `orden` ASC";
 $listado = $conexion->query($query);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -44,7 +44,7 @@ $listado = $conexion->query($query);
                                     </label>
                                 </td>
                                 <td>
-                                    <select class="selectores" id="<?php echo $obj->id;?>">
+                                    <select class="selectores" id="<?php echo $obj->id; ?>">
                                         <?php
                                         if ($obj->orden == 100) {
                                             $muestra = "No importa";
@@ -69,10 +69,52 @@ $listado = $conexion->query($query);
                         <tr>
                             <td colspan="2">
                                 <input style="text-shadow: #999 0.14em 0.14em 0.2em;height: 30px;color: red; width: 60px;cursor: pointer;"
-                                                   type="button" value="Grabar" id="guardar" />
+                                       type="button" value="Grabar" id="guardar" />
                             </td>
                         </tr>
                     </tbody>
+                    <thead>
+                        <tr><th colspan="2">PRODUCTOS NUEVOS</th></tr>
+                        <tbody>
+                            <?php $query = "SELECT `id`, `nombre`, `orden` FROM `md_item` ORDER BY `nuevo` DESC"; ?>
+                            <?php $listado->data_seek(0); ?>
+                            <tr>
+                                <td colspan="2">
+                                    <?php
+                                    $select = "<select id='nuevo1'>";
+                                    $texto = "Actualmente estan: ";
+                                    while ($obj = $listado->fetch_object()) {
+                                        if ($obj->nuevo == 1) {
+                                            $texto .= $obj->nombre . ", ";
+                                            $option2[0] = $obj->id;
+                                            $option2[1] = $obj->nombre;
+                                        }
+                                        $select .= "<option value='" . $obj->id . "'>" . $obj->nombre . "</option>";
+                                    }
+                                    $select .= "</select>";
+                                    $listado->data_seek(0);
+                                    $select .= "<br/><select id='nuevo2'>";
+                                    $select .= "<option value='".$option2[0]."'>".$option2[1]."</option>";
+                                    while ($obj = $listado->fetch_object()) {
+                                        $select .= "<option value='" . $obj->id . "'>" . $obj->nombre . "</option>";
+                                    }
+                                    $select .= "</select>";
+
+                                    echo $select;
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><?php echo $texto; ?></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input style="text-shadow: #999 0.14em 0.14em 0.2em;height: 30px;color: red; width: 60px;cursor: pointer;"
+                                           type="button" value="Grabar" id="guardarNew" />
+                                </td>
+                            </tr>                            
+                        </tbody>
+                    </thead>                    
                 </table>
             </div>
         </div>

@@ -19,9 +19,9 @@
 	} else {
 		$res1 = $conexion->query("UPDATE `md_item` 
 			SET `nombre` = '".$_POST['nombre']."', `descripcion` = '".str_replace("\n", "<br/>", $_POST['descripcion'])."',
-                            `categoria` = '".$_POST['categoria']."', `fotoface` = '".$_POST['fotoface']."'
+                            `fotoface` = '".$_POST['fotoface']."'
 			WHERE `id` = '".$_POST['id']."'");
-		$res2 = $conexion->query("UPDATE `md_categoria` SET `categoria` = '". $_POST['categoria'] ."' WHERE `id` = '".$_POST['id'] ."'");
+		$res2 = $conexion->query("UPDATE `md_categoria` SET `categoria` = '". $_POST['categoria'] ."' WHERE `id_item` = '".$_POST['id'] ."'");
 		if ($res1 && $res2){
 			$_SESSION['guardar_mensaje'] = "<div class='mensaje_ok'>Se ha editado el producto con exito.</div>";
 		}

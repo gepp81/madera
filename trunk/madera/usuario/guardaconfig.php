@@ -15,6 +15,7 @@ foreach ($arreglo as $item) {
     $query = "UPDATE `md_item` SET `orden`= '" . $item[1] . "' WHERE `id` = '" . $item[0] . "'";
     $conexion->query($query);
 }
+die;
 $array['mensaje'] = "Se actualizo correctamente";
 $array['estado'] = "1";
 echo json_encode($array);

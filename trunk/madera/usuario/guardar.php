@@ -14,8 +14,7 @@
 			$_SESSION['guardar_mensaje'] = "<div class='mensaje_ok'>Se ha creado el producto con exito.</div>";
 		}
 		else {
-		
-	$_SESSION['guardar_mensaje'] = "<div class='mensaje_error'>No se ha podido crear el producto.</div>";
+			$_SESSION['guardar_mensaje'] = "<div class='mensaje_error'>No se ha podido crear el producto.</div>";
 		}
 	} else {
 		$res1 = $conexion->query("UPDATE `md_item` 

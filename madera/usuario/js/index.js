@@ -17,7 +17,7 @@ $(window).ready(function(){
                     }
                 },
                 error : function(){
-                    alert("noanda");
+                    alert("noandaERROR");
                 }
             });
         } 
